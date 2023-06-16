@@ -6,13 +6,15 @@ import { Text, View } from '@/components/Themed';
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text className='rounded-md bg-neutral-300 p-2 text-3xl font-bold text-red-400'>
+        Tab One Tailwind
+      </Text>
       <View
         style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+        lightColor='#eee'
+        darkColor='rgba(255,255,255,0.1)'
       />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <EditScreenInfo path='app/(tabs)/index.tsx' />
     </View>
   );
 }
