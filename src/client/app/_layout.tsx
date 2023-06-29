@@ -9,6 +9,9 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import Toast from 'react-native-toast-message';
+import Font from '@/infra/assets/fonts/SpaceMono-Regular.ttf';
+import Colors from 'tailwindcss/colors';
+import 'react-native-gesture-handler';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -21,10 +24,7 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('@/infra/assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
-  });
+  const [loaded, error] = useFonts({ SpaceMono: Font, ...FontAwesome.font });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
@@ -46,8 +46,17 @@ function RootLayoutNav() {
 
   return (
     <>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
+      <ThemeProvider value={DefaultTheme}>
         <Stack>
+          <Stack.Screen
+            name='index'
+            options={{
+              headerShown: false,
+              statusBarHidden: false,
+              statusBarColor: Colors.black,
+            }}
+          />
           <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
           <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
         </Stack>
