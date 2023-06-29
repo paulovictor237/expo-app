@@ -7,3 +7,8 @@ declare module 'react-native-pie';
 //   const content: React.FC<SvgProps>;
 //   export default content;
 // }
+
+declare module '*.ttf';
+declare module '*.png';
+declare module '*.svg';
+declare module '*.jpeg';
