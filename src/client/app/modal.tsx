@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
-import EditScreenInfo from '@/client/components/atoms/EditScreenInfo';
+import EditScreenInfo from '@/client/components/atoms/exemples/EditScreenInfo';
 import { Text, View } from '@/client/components/atoms/Themed';
 
 export default function ModalScreen() {

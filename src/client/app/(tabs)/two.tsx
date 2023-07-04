@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import EditScreenInfo from '@/client/components/atoms/EditScreenInfo';
+import EditScreenInfo from '@/client/components/atoms/exemples/EditScreenInfo';
 import { Text, View } from '@/client/components/atoms/Themed';
 
 export default function TabTwoScreen() {

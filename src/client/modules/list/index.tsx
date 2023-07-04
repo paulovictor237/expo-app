@@ -4,7 +4,7 @@ import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
-import Card, { CARD } from '../../components/atoms/Card';
+import Card, { CARD } from '../../components/atoms/card';
 
 export function App() {
   const fakeData = Array.from({ length: CARD.length }, (_, k) => {
