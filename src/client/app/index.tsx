@@ -1,1 +1,1 @@
-export { App as default } from '@/client/modules/list';
+export { Details as default } from '@/client/modules/details';
