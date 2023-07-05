@@ -1,5 +1,11 @@
 import { useRouter, useSegments } from 'expo-router';
-import React from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 type ProviderProps = {
   signIn: (user: any) => void;
@@ -7,32 +13,25 @@ type ProviderProps = {
   user: any;
 };
 
-const AuthContext = React.createContext({} as ProviderProps);
-
-export function useAuth() {
-  return React.useContext(AuthContext);
-}
-
 export type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
-function useProtectedRoute(user: any) {
+
+const AuthContext = createContext({} as ProviderProps);
+
+export const useAuth = () => useContext(AuthContext);
+
+export const Provider = (props: Props) => {
+  const [user, setAuth] = useState<any>(null);
+
   const segments = useSegments();
   const router = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const inAuthGroup = segments[0] === '(auth)';
-    if (!user && !inAuthGroup) {
-      router.replace('/sign-in');
-    } else if (user && inAuthGroup) {
-      router.replace('/');
-    }
+    if (user && inAuthGroup) return router.replace('/');
+    if (!user && !inAuthGroup) return router.replace('/sign-in');
   }, [user, segments]);
-}
-export function Provider(props: Props) {
-  const [user, setAuth] = React.useState<any>(null);
-
-  useProtectedRoute(user);
 
   return (
     <AuthContext.Provider
@@ -45,4 +44,4 @@ export function Provider(props: Props) {
       {props.children}
     </AuthContext.Provider>
   );
-}
+};
